@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href=" {{ url_for('static', filename = 'css/main.css')}}" -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Car Price</title>
+</head>
+
+<body>
+    <div class="login">
+
+        <main role="main">
+            <div class="jumbotron">
+                <div class="col-sm-8 mx-auto">
+                    <h1>Welcome To Car Resell Price Prediction </h1> <br>
+                    <p>This is a quick exercise to find out the reselling price of the car, before you sell your
+                        car this will help you to get an idea of what amount you should get. 
+                        Also, this can be used by the buyer to decide whether to buy the car at price set by seller.
+                        We have used below different criteria to guesstimate the car resell price estimation. 
+                    </p>
+                    <b>
+                    <p>Please fill below details and click predict.</p>
+                </b>
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}" method="post">
+
+            <label for="KM_Driven">Enter KiloMeter Driven</label> <br>
+            <input type="text" name="KM_Driven" placeholder="KM_Driven" required="required" /><br>
+            <label for="Years_Old">Years Old</label><br>
+            <input type="text" name="Years_Old" placeholder="Years_Old" required="required" /><br>
+
+            <!-- Fuel Type Dropdown -->
+            <label for="Brand-Type">Enter Car Brand</label><br>
+            <select class="form-input align-center" name="Brand-Type" required>
+                <option value="none">--- Brand Name ---</option>
+                <option value="Audi">Audi</option>
+                <option value="BMW">BMW</option>
+                <option value="Honda">Honda</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="JLR">JLR</option>
+                <option value="Mahindra">Mahindra</option>
+                <option value="Maruti">Maruti</option>
+                <option value="Mercedes">Mercedes</option>
+                <option value="Tata">Tata</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Volkswagen">Volkswagen</option>
+            </select><br>
+
+            <!-- Fuel Type Dropdown -->
+            <label for="Fuel-Type">Enter Fuel Type</label><br>
+            <select class="form-input align-center" name="Fuel-Type" required>
+                <option value="none">--- Fuel Type ---</option>
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="CNG">CNG</option>
+                <option value="LPG">LPG</option>
+                <option value="Electric">Electric</option>
+
+            </select><br>
+
+            <!-- Seller Type Dropdown -->
+            <label for="Seller-Type">Enter Seller Type</label><br>
+            <select class="form-input align-center" name="Seller-Type" required>
+                <option value="none">--- Seller Type ---</option>
+                <option value="Individual">Individual</option>
+                <option value="Dealer">Dealer</option>
+                <option value="TrustMarkDealer">TrustMarkDealer</option>
+            </select><br>
+
+            <!-- Transmission Type Dropdown -->
+            <label for="Transmission-Type">Enter Transmission Type</label><br>
+            <select class="form-input align-center" name="Transmission-Type" required>
+                <option value="none">--- Transmission ---</option>
+                <option value="Manual">Manual</option>
+                <option value="Automatic">Automatic</option>
+            </select><br>
+
+            <!-- Owner Type Dropdown -->
+            <label for="Owner-Type">Enter Owner Type</label><br>
+            <select class="form-input align-center" name="Owner-Type" required>
+                <option value="none">--- Owner Type ---</option>
+                <option value="First-Owner">First-Owner</option>
+                <option value="Second-Owner">Second-Owner</option>
+                <option value="Third-Owner">Third-Owner</option>
+                <option value="Fourth-Above-Owner">Fourth-Above-Owner</option>
+                <option value="Test-Owner">Test-Owner</option>
+
+            </select><br>
+
+            <br>
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+
+        <br>
+        <br>
+
+        <h2> {{ prediction_text }} </h2>
+    </div>
+</div>
+</main>
+
+    </div>
+</body>
+
+</html>
